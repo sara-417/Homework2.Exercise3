@@ -4,6 +4,7 @@ import android.app.ProgressDialog.show
 import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 import com.google.android.material.snackbar.Snackbar
@@ -39,6 +40,16 @@ class MainActivity : AppCompatActivity() {
         binding.nextButton.setOnClickListener{
             currentIndex=(currentIndex + 1) % questionBank.size
             updateQuestion()
+        }
+        binding.previousButton.setOnClickListener{
+            if(currentIndex == 0){
+                currentIndex = questionBank.size - 1
+                updateQuestion()
+            }
+            else{
+                currentIndex=(currentIndex - 1) % questionBank.size
+                updateQuestion()
+            }
         }
         updateQuestion()
     }
